@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dice : MonoBehaviour
 {
 
-    public int dice; 
+    public int dice;
+    public Playerposition position;
+    public GameObject dicedis;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        position = new Playerposition("krueger", 6);
     }
 
     // Update is called once per frame
@@ -18,8 +21,10 @@ public class Dice : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump"))
         {
-            int dice = Random.Range(2, 13);
-            Debug.Log(dice);
+            int dice = Random.Range(2,6);
+            position.AddPos(dice);
+            Debug.Log(position.BoardPos);
+            dicedis.GetComponent<Text>().text = position.BoardPos.ToString();
         }
     }
 }

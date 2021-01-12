@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playerposition : MonoBehaviour
+public class Playerposition
 {
 
     public Playerposition(string Name, int Spaces)
@@ -19,7 +19,8 @@ public class Playerposition : MonoBehaviour
 
     public void AddPos(int Pos)
     {
-        BoardPos += Coterminal(Pos);
+        BoardPos += Pos;
+        BoardPos = Coterminal(BoardPos);
     }
     public int Coterminal(int Pos)
     {
