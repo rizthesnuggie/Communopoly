@@ -595,8 +595,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344712605}
-  - component: {fileID: 344712604}
   - component: {fileID: 344712606}
+  - component: {fileID: 344712604}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 344712603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e805d29f44b599b49935228458427846, type: 3}
+  m_Script: {fileID: 11500000, guid: 000d40c0e07946c4298be43e8abbca69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Krueger: {fileID: 1772167950}
