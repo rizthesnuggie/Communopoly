@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class KruegerMove : MonoBehaviour
 {
-    public MovementController PlayerController;
+    public int Dicey;
     public GameObject Player;
-    public GameObject Container;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController = new MovementController(Container);
+        
     }
 
     // Update is called once per frame
@@ -19,9 +18,9 @@ public class KruegerMove : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire3"))
         {
-            PlayerController.AddPosition(Random.Range(1,6));
-            Debug.Log(PlayerController.BoardPosition);
-            Player.transform.position = PlayerController.Position;
+           Dicey = Random.Range(1, 7);
+            Player.transform.Translate(Vector3.back * Dicey);
+            Debug.Log(Dicey);
         }
     }
 }
