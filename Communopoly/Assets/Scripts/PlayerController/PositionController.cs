@@ -1,20 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MovementController
+public class PositionController
 {
-    public int BoardPosition { get; private set; }
+    public int BoardPosition { get; set; }
     public Vector3 Position { get; private set; }
 
-    Transform[] Waypoints;
 
-    public MovementController(GameObject PositionContainer)
+    Transform[] Waypoints;
+    public PositionController(GameObject PositionContainer)
     {
-        Waypoints = null;
-        Waypoints = PositionContainer.GetComponentsInChildren<Transform>()/*.OrderBy(point => Convert.ToInt32(string.Join("", point.name.Where(c => char.IsDigit(c))))).ToArray()*/;
-        Debug.Log(Waypoints.Length);
-       // Debug.Log(string.Join("", "example (2)".Where(c => char.IsDigit(c))));
+        List<Transform> waypoints = PositionContainer.GetComponentsInChildren<Transform>().ToList();
+        waypoints.RemoveAt(0);
+        Waypoints = waypoints.ToArray();
         if (Waypoints == null) throw new UnassignedReferenceException();
     }
     public void AddPosition(int pos)
