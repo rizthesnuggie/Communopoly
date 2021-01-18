@@ -7,6 +7,7 @@ public class PlayerInstanceController : MonoBehaviour
     // Start is called before the first frame update
     public GameObject PlayerContainer;
     PositionController GamePositionController;
+
     void Start()
     {
         GamePositionController = new PositionController(PlayerContainer.GetComponent<PlayerContainer>().Waypoints);
