@@ -1,25 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerInstanceController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject PlayerContainer;
-    PositionController GamePositionController;
+    public string Name { get; private set; }
+    public int Space { get; private set; }
 
-    void Start()
+    Transform[] Waypoints;
+    public void Instantiate(Transform[] Waypoints, string Name, int Start)
     {
-        GamePositionController = new PositionController(PlayerContainer.GetComponent<PlayerContainer>().Waypoints);
+        this.Space = Start;
+        this.Name = Name;
+        this.Waypoints = Waypoints;
+        if (Waypoints == null) throw new UnassignedReferenceException("wtf man");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void addSpace(int pos)
     {
-        if (Input.GetButtonDown("Fire1"))
+        Space += pos;
+        Coterminal();
+        //do animation here or something
+        transform.position = Waypoints[Space].transform.position;
+    }
+    void Coterminal()
+    {
+        while (Space >= Waypoints.Length)
         {
-            GamePositionController.AddPosition(1);
-            transform.position = GamePositionController.Position;
+            Space -= Waypoints.Length;
         }
     }
 }
